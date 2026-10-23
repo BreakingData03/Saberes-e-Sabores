@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mulheres Empreendedoras da Gastronomia de MS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Fonte única: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c1b22;--muted:#5d5c66;--bg:#f5f5f7;--plum:#43103f;--night:#25103a;--yellow:#ffc928;--pink:#db2777}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Inter',sans-serif;font-weight:700!important;letter-spacing:-0.035em;line-height:1.05}
+h1{font-weight:800!important}
+.hero{background:radial-gradient(circle at 90% 85%,rgba(255,201,40,.7),transparent 45%),linear-gradient(135deg,#6a1f9a 0%,#c4246f 52%,#f5a623 100%);color:#fff}
+.btn-w{background:#fff;color:var(--ink);font-weight:600;border-radius:6px;transition:filter .2s}.btn-w:hover{filter:brightness(.94)}
+.btn-g{border:1px solid rgba(255,255,255,.7);color:#fff;font-weight:600;border-radius:6px;transition:background .2s}.btn-g:hover{background:rgba(255,255,255,.15)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.hide-scrollbar::-webkit-scrollbar{display:none}.hide-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+.hidden-page{display:none!important}
+.fade{animation:fade .3s ease forwards}@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.btn-y{background:var(--yellow);color:var(--ink);font-weight:600;border-radius:6px;transition:filter .2s}
+.btn-y:hover{filter:brightness(.95)}
+.btn-o{border:1px solid #cfcdd6;background:#fff;color:var(--ink);font-weight:600;border-radius:6px;transition:background .2s}
+.btn-o:hover{background:#ececf1}
+.sq-btn{width:40px;height:40px;border:1px solid #dcdae3;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.sq-btn:hover{background:#ececf1}
+
+/* Cards das empreendedoras */
+.flyer{flex:0 0 calc((100% - 40px)/3);min-width:270px;height:440px;border-radius:12px;position:relative;overflow:hidden;background:#2a292e;color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;scroll-snap-align:start}
+.flyer img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.flyer::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(42,41,46,0) 35%,rgba(67,16,63,.96) 100%)}
+.flyer>div{position:relative;z-index:2}
+@media(max-width:700px){.flyer{flex-basis:85%}}
+
+/* Trilha */
+.trilha{background:linear-gradient(135deg,#f5a623 0%,#e0276f 45%,#7b24a8 100%);color:#fff}
+.tile{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:14px;min-height:140px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;transition:transform .2s,background .2s;text-align:left}
+.tile .n{font-size:28px;font-weight:700;letter-spacing:-0.03em;line-height:1}
+.tile .t{font-size:13.5px;line-height:1.3;opacity:.92}
+.tile.locked{cursor:not-allowed;opacity:.8}
+.tile.current{background:#fff;color:var(--ink);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.tile.current:hover{transform:translateY(-3px)}
+.tile.done{background:rgba(255,255,255,.34)}
+
+/* Teste */
+.test-viewport{overflow:hidden}.test-track{display:flex;transition:transform .45s ease}
+.test-slide{flex:0 0 100%;min-width:100%}
+.opt{width:100%;text-align:left;display:flex;gap:12px;align-items:flex-start;padding:14px 16px;background:#fff;border:1px solid #d9d7e0;border-radius:8px;font-size:15.5px;line-height:1.45;transition:all .15s}
+.opt:hover{border-color:var(--pink)}
+.opt.sel{border-color:var(--pink);background:#fdf2f8;box-shadow:0 0 0 1px var(--pink)}
+.radio{width:18px;height:18px;border:2px solid #bdbbc6;border-radius:50%;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center}
+.opt.sel .radio{border-color:var(--pink)}.opt.sel .radio::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--pink)}
+
+.foto-box{width:100%;aspect-ratio:16/7;min-height:220px;background:#e9e7ee;border:1px solid #d9d7e0;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.foto-box:empty::before{content:"Espaço reservado para foto";color:#8a8896;font-size:14px;font-weight:500}
+.foto-box img{width:100%;height:100%;object-fit:cover;display:block}
+.modal{position:fixed;inset:0;background:rgba(20,10,30,.6);backdrop-filter:blur(4px);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal.hidden{display:none}
+.panel{background:#fff;border-radius:14px;width:100%;position:relative}
+.ref p{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:10px}
+</style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+<!-- NAV -->
+<nav class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-gray-200">
+  <div class="wrap py-3 flex items-center justify-between gap-4">
+    <a href="#" onclick="navigateTo('home');return false" class="flex items-center gap-2.5">
+      <span class="w-9 h-9 rounded-lg flex items-center justify-center text-white" style="background:linear-gradient(135deg,#e0276f,#7b24a8)"><i class="fa-solid fa-utensils"></i></span>
+      <span class="leading-tight">
+        <span class="block font-bold text-[15px]" style="letter-spacing:-0.02em">Mulheres Empreendedoras</span>
+        <span class="block text-[11px] font-semibold uppercase tracking-wider" style="color:var(--pink)">Gastronomia MS</span>
+      </span>
+    </a>
+    <div class="flex items-center gap-1 sm:gap-2 text-sm font-medium">
+      <a href="#empreendedoras" onclick="navigateTo('home','empreendedoras');return false" class="hidden md:block px-3 py-2 rounded-md hover:bg-gray-100">Empreendedoras</a>
+      <a href="#projeto" onclick="navigateTo('home','projeto');return false" class="hidden md:block px-3 py-2 rounded-md hover:bg-gray-100">Projeto</a>
+      <a href="#trilha" onclick="navigateTo('home','trilha');return false" class="hidden md:block px-3 py-2 rounded-md hover:bg-gray-100">Trilha</a>
+      <a href="#pesquisa" onclick="navigateTo('home','pesquisa');return false" class="hidden md:block px-3 py-2 rounded-md hover:bg-gray-100">Pesquisa</a>
+      <button onclick="navigateTo('teste')" class="btn-y px-4 py-2.5 text-sm">Teste de Aptidão</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="fade">
+
+  <header class="hero">
+    <div class="wrap pt-16 pb-16 sm:pt-24 sm:pb-24">
+      <h1 class="text-4xl sm:text-6xl max-w-3xl">Sabores, histórias e negócios das mulheres da gastronomia de MS</h1>
+      <p class="mt-5 text-base sm:text-lg max-w-2xl leading-relaxed" style="color:rgba(255,255,255,.94)">Conheça as histórias das empreendedoras locais, explore seus produtos artesanais e teste seus conhecimentos sobre a cultura gastronômica sul-mato-grossense.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#empreendedoras" class="btn-y px-5 py-3 text-sm">Conhecer as empreendedoras</a>
+        <a href="#trilha" class="btn-w px-5 py-3 text-sm">Jogar a trilha</a>
+        <button onclick="navigateTo('teste')" class="btn-g px-5 py-3 text-sm">Fazer o teste de aptidão</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- EMPREENDEDORAS -->
+  <section id="empreendedoras" class="wrap pt-16 sm:pt-24 pb-16 sm:pb-24">
+    <div class="flex items-end justify-between gap-6 mb-7">
+      <div>
+        <h2 class="text-4xl sm:text-5xl">Empreendedoras</h2>
+        <p class="mt-3 text-base sm:text-lg max-w-lg" style="color:var(--muted)">Nove histórias de mulheres que fazem a gastronomia de Mato Grosso do Sul.</p>
+      </div>
+      <div class="flex gap-2 flex-shrink-0">
+        <button class="sq-btn" onclick="scrollCarousel(-1)" aria-label="Anterior"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+        <button class="sq-btn" onclick="scrollCarousel(1)" aria-label="Próximo"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+      </div>
+    </div>
+    <div id="carousel" class="flex gap-5 overflow-x-auto hide-scrollbar" style="scroll-snap-type:x mandatory;scroll-behavior:smooth"></div>
+  </section>
+
+  <!-- PROJETO -->
+  <section id="projeto" class="pb-16 sm:pb-24">
+    <div class="wrap">
+      <div class="bg-white rounded-xl border border-gray-200 p-7 sm:p-12">
+        <h2 class="text-3xl sm:text-5xl max-w-3xl">Projeto Saberes e Sabores Regionais: valorização da cultura e do desenvolvimento local</h2>
+        <p class="mt-6 text-base sm:text-lg leading-relaxed max-w-3xl" style="color:var(--muted)">Durante o 2º bimestre de 2026, os estudantes dos 2º anos do Ensino Médio desenvolveram, no componente curricular Desenvolvimento Local, o projeto “Saberes e Sabores Regionais”. A atividade destacou como a gastronomia regional reflete a cultura e a economia de uma população. Os estudantes pesquisaram pratos típicos, criaram cartazes virtuais com auxílio da Inteligência Artificial (IA) e participaram de um fórum no Padlet, compartilhando opiniões e valorizando a importância histórica, cultural, social e econômica da gastronomia para o desenvolvimento local.</p>
+        <a href="https://padlet.com/ruthpazcamargo/desenvolvimento-local-saberes-e-sabores-regionais-e99h8idcijgse2h2" target="_blank" rel="noopener noreferrer" class="btn-y inline-flex items-center gap-2 px-5 py-3 text-sm mt-7">Acessar o fórum no Padlet <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NETWORKING -->
+  <section id="networking" class="pb-16 sm:pb-24">
+    <div class="wrap">
+      <h2 class="text-3xl sm:text-5xl max-w-3xl">Networking de Mulheres Empreendedoras</h2>
+      <div class="foto-box mt-8">
+      <img src="mulherada.png" alt="Networking de Mulheres Empreendedoras"> -->
+      </div>
+      <p class="mt-6 text-base sm:text-lg leading-relaxed max-w-3xl" style="color:var(--muted)">Um encontro de mulheres que compartilham experiências, fortalecem conexões e criam oportunidades de negócios. Uma rede de parceria, inspiração e apoio mútuo que valoriza o protagonismo feminino e fortalece o empreendedorismo.</p>
+      <p class="mt-4 text-lg sm:text-xl font-semibold" style="color:var(--pink);letter-spacing:-0.01em">Juntas, crescemos e conquistamos mais!</p>
+    </div>
+  </section>
+
+  <!-- TRILHA -->
+  <section id="trilha" class="trilha py-16 sm:py-24">
+    <div class="wrap">
+      <h2 class="text-4xl sm:text-6xl">Trilha do aprendizado</h2>
+      <p class="mt-4 text-base sm:text-lg max-w-xl leading-relaxed" style="color:rgba(255,255,255,.92)">Responda às perguntas sobre a gastronomia e as tradições de Mato Grosso do Sul para liberar as 14 etapas, uma de cada vez.</p>
+      <div class="mt-7 mb-8 flex items-center gap-5 flex-wrap">
+        <span id="game-progress-text" class="font-semibold text-base">0 de 14 etapas</span>
+        <div class="flex-1 min-w-[140px] max-w-[360px] h-1 rounded-full" style="background:rgba(255,255,255,.3)"><div id="game-progress-bar" class="h-full rounded-full bg-white transition-all duration-500" style="width:0"></div></div>
+        <button onclick="resetGameProgress()" class="underline text-sm">Reiniciar</button>
+      </div>
+      <div id="game-board-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3"></div>
+      <div id="victory-banner" class="hidden mt-8 bg-white rounded-xl p-6 sm:p-8" style="color:var(--ink)">
+        <h3 class="text-2xl sm:text-3xl">Parabéns, você completou a trilha!</h3>
+        <p class="mt-2 text-base" style="color:var(--muted)">Você domina os sabores, segredos e a riqueza cultural do Mato Grosso do Sul.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PESQUISA -->
+  <section id="pesquisa" class="wrap py-16 sm:py-24">
+    <h2 class="text-4xl sm:text-5xl">Sobre a pesquisa</h2>
+    <p class="mt-4 text-base sm:text-lg max-w-xl leading-relaxed" style="color:var(--muted)">Saberes, sabores e empreendedorismo feminino: desenvolvimento de uma plataforma digital de difusão gastronômica e incentivo ao empreendedorismo.</p>
+
+    <div class="grid md:grid-cols-3 gap-8 mt-10 text-[15px] leading-relaxed" style="color:var(--muted)">
+      <div>
+        <h3 class="text-lg mb-2" style="color:var(--ink);letter-spacing:-0.01em">Objetivo</h3>
+        <p>A gastronomia regional preserva a identidade cultural e fortalece a economia local, mas muitas empreendedoras do setor ainda enfrentam barreiras no acesso a ferramentas digitais para divulgar seus negócios.</p>
+        <p class="mt-3">O projeto desenvolveu uma plataforma web acessível para dar visibilidade a esses saberes e às histórias de mulheres locais, com Tecnologias Digitais de Informação e Comunicação (TDIC) e os princípios da Cultura Maker.</p>
+      </div>
+      <div>
+        <h3 class="text-lg mb-2" style="color:var(--ink);letter-spacing:-0.01em">Metodologia</h3>
+        <p>Pesquisa aplicada, de abordagem qualitativa e caráter exploratório e descritivo, fundamentada na Cultura Maker (aprender fazendo).</p>
+        <p class="mt-3">Três etapas: levantamento bibliográfico e sistematização dos saberes e perfis de empreendedoras; desenvolvimento da plataforma web, com Inteligência Artificial e trilha interativa; análise qualitativa das contribuições da plataforma para a valorização da memória cultural e o incentivo ao empreendedorismo feminino.</p>
+      </div>
+      <div>
+        <h3 class="text-lg mb-2" style="color:var(--ink);letter-spacing:-0.01em">Conclusão</h3>
+        <p>A proposta integrou os eixos de cultura, tecnologia e mercado e mostrou que a Inteligência Artificial e a metodologia Maker são eficazes no ambiente escolar para promover o engajamento dos estudantes e a inclusão digital.</p>
+        <p class="mt-3">A plataforma se consolidou como instrumento de inovação social e de valorização da memória gastronômica regional, ampliando a visibilidade e o fortalecimento do empreendedorismo feminino em Três Lagoas.</p>
+      </div>
+    </div>
+
+    <div class="ref border-t border-gray-300 mt-12 pt-6">
+      <h3 class="text-base" style="letter-spacing:-0.01em">Referências</h3>
+      <p>BRASIL. Ministério da Educação. <b>Base Nacional Comum Curricular.</b> Brasília: MEC, 2018.</p>
+      <p>NATIONS, United. <b>Transforming our world: the 2030 Agenda for Sustainable Development.</b> New York: UN Publishing, 2015. (Apoio aos ODS 5 e 8).</p>
+      <p>VALENTE, José Armando. <b>A integração das tecnologias na educação: a prática pedagógica e o desenvolvimento do pensamento computacional.</b> Revista e-Curriculum, São Paulo, v. 16, n. 1, p. 1-25, 2018. (Fundamentação sobre Cultura Maker e TICs).</p>
+      <p>ZANINI, Maria Célia. <b>Gastronomia, patrimônio e desenvolvimento local: reflexões sobre saberes e sabores.</b> Revista Memória em Rede, Pelotas, v. 11, n. 21, p. 45-62, 2019.</p>
+    </div>
+  </section>
+</div>
+
+<!-- TESTE -->
+<div id="page-teste" class="hidden-page fade">
+  <main class="wrap py-10 sm:py-16" style="max-width:760px">
+    <button onclick="navigateTo('home')" class="btn-o px-4 py-2.5 text-sm mb-8"><i class="fa-solid fa-arrow-left mr-2 text-xs"></i>Voltar</button>
+    <h1 class="text-4xl sm:text-5xl">Teste de aptidão empreendedora</h1>
+    <p class="mt-4 text-base sm:text-lg leading-relaxed" style="color:var(--muted)">Avalie seu potencial de gestão, liderança e resiliência no mercado de gastronomia de Mato Grosso do Sul. Responda uma pergunta por vez.</p>
+
+    <div class="bg-white rounded-xl border border-gray-200 p-5 sm:p-8 mt-8">
+      <div class="flex items-center justify-between text-sm font-semibold mb-2.5" style="color:var(--muted)">
+        <span id="test-counter">Pergunta 1 de 10</span><span id="test-answered">0 respondidas</span>
+      </div>
+      <div class="w-full h-1.5 rounded-full bg-gray-200 overflow-hidden mb-6"><div id="test-progress" class="h-full rounded-full transition-all duration-500" style="width:10%;background:linear-gradient(90deg,#e0276f,#7b24a8)"></div></div>
+
+      <div class="test-viewport"><div id="test-track" class="test-track"></div></div>
+
+      <div class="mt-7 flex items-center justify-between gap-3">
+        <button id="test-prev" onclick="testGo(-1)" class="btn-o px-5 py-3 text-sm disabled:opacity-40 disabled:cursor-not-allowed"><i class="fa-solid fa-arrow-left mr-2 text-xs"></i>Anterior</button>
+        <div id="test-dots" class="hidden sm:flex items-center gap-1.5"></div>
+        <button id="test-next" onclick="testGo(1)" class="btn-y px-5 py-3 text-sm disabled:opacity-40 disabled:cursor-not-allowed">Próxima<i class="fa-solid fa-arrow-right ml-2 text-xs"></i></button>
+        <button id="test-submit" onclick="calculateAptitude()" class="btn-y hidden px-5 py-3 text-sm disabled:opacity-40 disabled:cursor-not-allowed">Ver diagnóstico</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- MODAIS -->
+<div id="quiz-modal" class="modal hidden">
+  <div class="panel p-6 sm:p-9 max-w-xl fade">
+    <button onclick="closeQuizModal()" aria-label="Fechar" class="sq-btn absolute top-4 right-4"><i class="fa-solid fa-xmark"></i></button>
+    <p class="text-sm font-semibold" style="color:var(--pink)">Etapa <span id="modal-tile-num">1</span> de 14</p>
+    <h3 id="modal-tile-title" class="text-2xl sm:text-3xl mt-1 pr-12"></h3>
+    <p id="modal-question-text" class="text-base sm:text-lg leading-relaxed mt-5 mb-6"></p>
+    <div id="modal-options-container" class="space-y-2.5"></div>
+    <p id="quiz-feedback" class="hidden mt-4 text-sm sm:text-base font-semibold"></p>
+  </div>
+</div>
+
+<div id="result-modal" class="modal hidden">
+  <div class="panel p-7 sm:p-10 max-w-xl fade">
+    <button onclick="closeResultModal()" aria-label="Fechar" class="sq-btn absolute top-4 right-4"><i class="fa-solid fa-xmark"></i></button>
+    <p class="text-sm font-semibold" style="color:var(--pink)">Seu diagnóstico</p>
+    <h3 id="result-title" class="text-3xl sm:text-4xl mt-1 pr-10"></h3>
+    <p id="result-score" class="text-2xl font-bold mt-3" style="letter-spacing:-0.02em"></p>
+    <p id="result-description" class="text-base leading-relaxed mt-4" style="color:var(--muted)"></p>
+    <div class="flex flex-wrap gap-3 mt-7">
+      <button onclick="closeResultModal();navigateTo('home','empreendedoras')" class="btn-y px-5 py-3 text-sm">Conhecer as empreendedoras</button>
+      <button onclick="restartTest()" class="btn-o px-5 py-3 text-sm">Refazer teste</button>
+    </div>
+  </div>
+</div>
+
+<div id="entrepreneur-modal" class="modal hidden" style="background:rgba(20,10,30,.7)">
+  <div class="panel max-w-2xl overflow-hidden max-h-[90vh] overflow-y-auto hide-scrollbar fade">
+    <button onclick="closeEntrepreneurModal()" aria-label="Fechar" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-lg bg-black/50 hover:bg-black/70 text-white flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+    <div class="relative h-56 sm:h-72 bg-gray-800">
+      <img id="modal-emp-foto" src="" alt="" class="w-full h-full object-cover">
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom,rgba(42,41,46,0) 30%,rgba(67,16,63,.95))"></div>
+      <div class="absolute bottom-5 left-6 right-6 text-white">
+        <p id="modal-emp-cidade" class="text-sm opacity-80"></p>
+        <h2 id="modal-emp-nome" class="text-3xl sm:text-4xl mt-1"></h2>
+      </div>
+    </div>
+    <div class="p-6 sm:p-8">
+      <h3 class="text-sm font-semibold mb-3" style="color:var(--pink)">História e trajetória</h3>
+      <p id="modal-emp-historia" class="text-base leading-relaxed" style="color:#3d3c45"></p>
+      <p id="modal-emp-instagram" class="mt-6 font-semibold" style="color:var(--pink)"></p>
+      <button onclick="closeEntrepreneurModal()" class="btn-y w-full py-3 text-sm mt-6">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer style="background:var(--night);color:rgba(255,255,255,.75)" class="mt-auto">
+  <div class="wrap py-10 grid md:grid-cols-2 gap-8 text-[13px] leading-relaxed">
+    <div>
+      <p class="font-semibold mb-1" style="color:var(--yellow)">Saberes e Sabores</p>
+      <p>2ºD: Melyssa Rodrigues Rocha, Paula Souza Pimenta Paes Gomes 
+      <p>2ºB: Santiago Velandia Albornoz e Vitor Hugo Oliveira da Cruz.</p>
+      <p>Orientação: Profa. Me Ruth da Paz Camargo.</p>
+      <p>FEPETEC, eixo Tecnologia.</p>
+    </div>
+    <div>
+      <p>Governo do Estado de Mato Grosso do Sul</p>
+      <p>Secretaria de Estado de Educação</p>
+      <p>Escola Estadual Prof. João Magiano Pinto, Três Lagoas</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== Empreendedoras =====
+        const flyersData = [
+            {
+                nome: "Lourdes Neres", negocio: "Doces do Pantanal", cidade: "Três Lagoas - MS",
+                icone: "fa-candy-cane", foto: "lurdinha2.png", fotoCard: "lurdinha1.png",
+                historia: "À frente da Escola Estadual Professor João Magiano Pinto (JOMAP) há muitos anos, Lourdes Neres une liderança, dedicação à educação e espírito empreendedor. Com seu tradicional macarrão na chapa, transforma seu talento na gastronomia em uma iniciativa de solidariedade e empreendedorismo, mobilizando e contando com a parceria da comunidade escolar para arrecadar recursos destinados a eventos de xadrez, excursões e outras experiências educativas. Sua atuação demonstra que empreender também é compartilhar talentos, unir pessoas e criar oportunidades, levando o cuidado com os estudantes muito além da sala de aula.",
+                instagram: "@lourdes.neres"
+            },
+            {
+                nome: "Carol Delboni", negocio: "Carol Delboni Doceria", cidade: "Três Lagoas - MS",
+                icone: "fa-cookie", foto: "carol2.png", fotoCard: "carol1.png",
+                historia: "Sou Carol Delboni, empreendedora na Gastronomia há mais de 13 anos. Filha e neta de comerciantes, iniciei na confeitaria após deixar a CLT e abrir uma pequena loja de doces. Busquei conhecimento, passei a produzir meus próprios produtos e, com o crescimento das encomendas, transformei o negócio na Carol Delboni Doceria. Hoje, trabalho com produção artesanal, qualidade e o propósito de tornar momentos especiais.",
+                instagram: "@caroldelbonidoceria"
+            },
+            {
+                nome: "Erika Moreiro", negocio: "Empório Guavira", cidade: "Bonito - MS",
+                icone: "fa-jar", foto: "erika2.png", fotoCard: "erika1.jpg",
+                historia: "Minha história com a gastronomia começou em 2013, quando decidi deixar o trabalho CLT para empreender, após o nascimento da minha filha Loren. Comecei produzindo cestas de café da manhã, bolos e doces, e, com dedicação e persistência, transformei essa atividade em meu negócio e em parte da minha identidade.",
+                instagram: "@erikamoreiragastronomia"
+            },
+            {
+                nome: "Mih Marmitaria", negocio: "Sabor Pantaneiro", cidade: "Aquidauana - MS",
+                icone: "fa-fish", foto: "mih.jpeg",
+                historia: "A Mih Marmitaria nasceu em 2021, a partir de apenas R$ 50, muita coragem e vontade de transformar a realidade da família. Com trabalho, fé e persistência, a empreendedora conquistou clientes, reinvestiu os ganhos e fez seu negócio crescer. Hoje, sua trajetória inspira e mostra que grandes sonhos começam com pequenas oportunidades e a decisão de não desistir.",
+                instagram: "@saborpantaneiro_aquidauana"
+            },
+            {
+                nome: "Ana Maria Braga", negocio: "Cantinho do Sobá", cidade: "Campo Grande - MS",
+                icone: "fa-bowl-rice", foto: "anamaria1.png", fotoCard: "anamaria1.png",
+                historia: "Ana Maria transformou sua paixão pela cozinha em uma oportunidade de empreender. Começou preparando suas receitas com carinho para pessoas próximas e, aos poucos, percebeu que aquilo que fazia com amor também poderia se tornar seu negócio. Sua história mostra que não é preciso começar grande para realizar um sonho. Com coragem, dedicação e vontade de aprender, toda mulher pode transformar seu talento em uma oportunidade de negócio.",
+                instagram: "@anamariabragaoficial"
+            },
+            {
+                nome: "Juliana Moreira", negocio: "Empadão da Terra", cidade: "Três Lagoas - MS",
+                icone: "fa-pie-chart", foto: "juli.jpeg",
+                historia: "Após 25 anos de carreira corporativa e uma mudança inesperada, Juliana Moreira encontrou a oportunidade de realizar um novo sonho: criar o Empório São José. Inspirado no empório de sua avó, que esteve à frente do negócio por mais de 50 anos, o empreendimento tem como propósito compartilhar sabores, tradições e receitas de família, como os biscoitos idealizados por sua mãe, levando carinho e afeto à mesa de seus clientes.",
+                instagram: "@empadaodaterra_tl"
+            },
+            {
+                nome: " Livya Sara", negocio: "Empadão da Terra", cidade: "Três Lagoas - MS",
+                icone: "fa-pie-chart", foto: "livi.jpeg",
+                historia: "Quando eu tinha nove anos minha mãe me ensinou a fazer bolo, depois disso comecei a vender nas férias, atualmente estou vendendo brownie com o propósito de comprar uma bicicleta elétrica",
+                instagram: "@empadaodaterra_tl"
+            },
+            {
+                nome: "Carina Pedro Trevisan, ", negocio: "Sabor de MS Alambiques", cidade: "Dourados - MS",
+                icone: "fa-wine-bottle", foto: "cari.jpeg",
+                historia: "Carina Pedro Trevisan, natural de Rio Negro (PR), encontrou na culinária uma forma de transformar amor e carinho em empreendedorismo. Há cerca de dois anos em Três Lagoas (MS), criou a Sabor e Afeto, unindo sabor, saúde e dedicação. Seu negócio oferece opções saudáveis, sem glúten, lactose ou açúcar, além de doces e salgados tradicionais, tornando cada receita uma demonstração de cuidado e afeto.Ana Paula é engenheira de alimentos e mestre cervejeira em Dourados. Ela utiliza a riqueza dos ingredientes nativos de MS para produzir cervejas artesanais amadurecidas com castanha de baru e licores destilados em alambique de cobre.",
+                instagram: "@sabordems_alambiques"
+            },
+            {
+                nome: "Rita Lobo", negocio: "Delícias de Maracaju", cidade: "Maracaju - MS",
+                icone: "fa-drumstick-bite", foto: "lobo2.png", fotoCard: "lobo1.png",
+                historia: "Rita Lobo transformou seu interesse por culinária e comunicação em um projeto que se tornou referência na cozinha brasileira. Criadora do Panelinha, ela começou compartilhando receitas e conhecimentos sobre alimentação e, com dedicação e criatividade, construiu uma trajetória empreendedora no universo da gastronomia.",
+                instagram: "@ritalobo"
+            },
+            {
+                nome: "Mayara Edwirges", negocio: "Quibes & Salgados MS", cidade: "Coxim - MS",
+                icone: "fa-cookie-bite",
+                foto: "maya.jpeg",
+                historia: "Há um ano, Mayara Edwirges Santos Vitório criou a AMÔ VERDE, inicialmente com delivery de saladas saudáveis. Em janeiro de 2026, lançou o Copo Tropical, preparado com frutas, sal, limão e temperos, conquistando espaço em eventos e pontos estratégicos de Três Lagoas.Diante dos desafios do inverno, Mayara reinventou seu negócio e, desde setembro, leva o produto a diferentes locais da cidade, conquistando clientes e novas parcerias. Agora, a empreendedora se prepara para realizar mais um sonho: abrir seu ponto comercial fixo.",
+                instagram: "@quibesms_coxim"
+            }
+        ];
+
+        // ===== Trilha (14 etapas) =====
+        const quizQuestions = [
+            { titulo: "Patrimônio de Campo Grande", pergunta: "Qual é o prato de origem japonesa, adaptado em MS, considerado Patrimônio Imaterial de Campo Grande?", opcoes: ["Sobá", "Rámen", "Yakisoba", "Udon"], correta: 0 },
+            { titulo: "Fruta Símbolo do Estado", pergunta: "Qual é a fruta nativa do Cerrado/Pantanal muito usada em geleias e declarada fruto símbolo de MS?", opcoes: ["Pitanga", "Guavira", "Jabuticaba", "Açaí"], correta: 1 },
+            { titulo: "Biscoito de Polvilho e Queijo", pergunta: "Como se chama o famoso biscoito de polvilho e queijo em formato de herradura, de origem paraguaia?", opcoes: ["Pão de Queijo", "Biscoito Frito", "Chipa", "Peta"], correta: 2 },
+            { titulo: "Bolo Salgado Paraguaio", pergunta: "Qual prato tradicional de MS é um 'bolo salgado' feito com milho, queijo, cebola e leite?", opcoes: ["Pamonha Salgada", "Sopa Paraguaia", "Curau", "Empadão"], correta: 1 },
+            { titulo: "Linguiça com Indicação Geográfica", pergunta: "Qual cidade sul-mato-grossense é famosa nacionalmente por sua Linguiça com indicação geográfica?", opcoes: ["Maracaju", "Bonito", "Corumbá", "Dourados"], correta: 0 },
+            { titulo: "Peixe Típico do Pantanal", pergunta: "O prato gratinado feito com filé de pintado, molho de tomate, urucum e queijo se chama:", opcoes: ["Moqueca Pantaneira", "Peixe a Urucum", "Pintado ao Molho", "Tucunaré Frito"], correta: 1 },
+            { titulo: "Castanha do Cerrado", pergunta: "Qual castanha nativa do Cerrado de MS é riquíssima em nutrientes e usada em bolos e licores?", opcoes: ["Castanha do Pará", "Baru", "Noz Pecã", "Macadâmia"], correta: 1 },
+            { titulo: "Bebida Típica Gelada", pergunta: "Qual bebida gelada à base de erva-mate é símbolo oficial do estado de Mato Grosso do Sul?", opcoes: ["Chimarrão", "Chá Mate Quente", "Tereré", "Suco de Guavira"], correta: 2 },
+            { titulo: "Corante Natural do Pantanal", pergunta: "Qual ingrediente natural avermelhado dá cor e sabor característico ao Peixe a Urucum?", opcoes: ["Colorau/Urucum", "Açafrão", "Páprica", "Pimenta Calabresa"], correta: 0 },
+            { titulo: "Prato de Comitiva Pantaneira", pergunta: "Qual prato servido nas comitivas pantaneiras é feito de arroz misturado com carne seca e temperos?", opcoes: ["Baião de Dois", "Galinhada", "Arroz de Carreteiro", "Risoto de Carne"], correta: 2 },
+            { titulo: "Fruto Aromático do Cerrado", pergunta: "Fruto de cor amarela com caroço espinhoso e sabor marcante muito usado na culinária regional:", opcoes: ["Umbu", "Pequi", "Cajá", "Mangaba"], correta: 1 },
+            { titulo: "Ingrediente Base para Farofa", pergunta: "Qual raiz é a base principal da Farofa Pantaneira e do famoso Quibe Frito regional?", opcoes: ["Batata Doce", "Mandioca", "Inhame", "Cará"], correta: 1 },
+            { titulo: "Tradição das Feiras Livres", pergunta: "Qual local é o principal ponto de encontro da comunidade para saborear o Sobá na capital?", opcoes: ["Feira Central (Feirona)", "Feira da Bolívia", "Mercado Municipal", "Praça das Araras"], correta: 0 },
+            { titulo: "Grande Final da Trilha", pergunta: "Qual é o pilar mais importante do empreendedorismo feminino na gastronomia de MS?", opcoes: ["Concorrência predatória", "União, valorização da cultura e inovação local", "Trabalhar sem planejamento", "Usar apenas produtos importados"], correta: 1 }
+        ];
+
+        // ===== Teste de Aptidão (cada opção: [texto, pontos]) =====
+        const aptitudeQuestions = [
+            { cat: "Gestão e Ficha Técnica", q: "Ao planejar o cardápio do seu negócio gastronômico, qual é o seu principal ponto de atenção em relação aos custos?", o: [
+                ["Focar exclusivamente na qualidade dos ingredientes, definindo o preço final com base no mercado concorrente.", 1],
+                ["Calcular os custos diretos e indiretos por meio de fichas técnicas detalhadas para determinar a margem de lucro e o preço final.", 3],
+                ["Apenas somar o valor pago nos insumos e multiplicar por três para cobrir despesas e lucro.", 2],
+                ["Ajustar os preços conforme a demanda do dia a dia, sem necessidade de precificação fixa.", 0]] },
+            { cat: "Vigilância Sanitária e Regulamentação", q: "Como você lida com as exigências sanitárias (Anvisa) e as boas práticas de manipulação de alimentos?", o: [
+                ["Implemento processos rigorosos de armazenamento, rotulagem e treinamento contínuo para garantir conformidade e segurança alimentar.", 3],
+                ["Sigo apenas as orientações básicas quando há previsão de fiscalização no estabelecimento.", 2],
+                ["Delego a responsabilidade inteiramente aos auxiliares de cozinha, sem monitoramento sistemático.", 1],
+                ["Considero as normas burocráticas demais e prefiro focar apenas na agilidade do atendimento.", 0]] },
+            { cat: "Planejamento Financeiro e Fluxo de Caixa", q: "O setor de alimentação possui forte sazonalidade e alto giro de estoque. Como você organiza a gestão financeira da empresa?", o: [
+                ["Misturo as contas pessoais e da empresa no início para simplificar os pagamentos.", 1],
+                ["Mantenho um controle rigoroso de fluxo de caixa, separando o pro-labore e prevendo reservas de emergência para períodos de baixa.", 3],
+                ["Reinvisto 100% do faturamento diário na compra de novos equipamentos sem projetar os custos fixos do próximo mês.", 0],
+                ["Acompanho o saldo bancário ao final do mês para verificar se houve sobra ou prejuízo.", 2]] },
+            { cat: "Gestão de Equipe e Liderança na Cozinha", q: "A rotina na gastronomia exige rapidez e resolução sob pressão. Qual é o seu estilo de liderança em momentos de alta demanda?", o: [
+                ["Mantenho comunicação clara, processos predefinidos e feedback constante para manter a brigada alinhada e motivada.", 3],
+                ["Assumo a execução de todas as tarefas para garantir que tudo saia perfeito, mesmo sobrecarregando a mim mesma.", 2],
+                ["Deixo que a equipe resolva os problemas operacionais sozinha para evitar conflitos na cozinha.", 1],
+                ["Centralizo as decisões e imponho ordens sem explicar o porquê dos processos aos colaboradores.", 0]] },
+            { cat: "Experiência do Cliente e Identidade de Marca", q: "O que você considera mais determinante para a fidelização de clientes em um negócio gastronômico?", o: [
+                ["Apenas oferecer o menor preço da região.", 0],
+                ["A combinação de consistência no sabor, excelente atendimento e uma proposta de valor bem definida que gera conexão.", 3],
+                ["Fazer grandes investimentos em publicidade, independentemente da padronização do prato.", 1],
+                ["Mudar o cardápio com frequência quinzenal para testar novas tendências do mercado.", 2]] },
+            { cat: "Logística e Gestão de Estoque", q: "Ingredientes perecíveis exigem controle de estoque constante. Qual estratégia você utiliza para evitar desperdícios?", o: [
+                ["Compro grandes quantidades de insumos perecíveis para obter descontos com fornecedores, sem prever o giro.", 1],
+                ["Aplico a metodologia PVPS (Primeiro que Vence, Primeiro que Sai) e realizo inventários periódicos alinhados à previsão de vendas.", 3],
+                ["Compro apenas o necessário no dia, fazendo compras diárias em varejistas sem negociação de atacado.", 2],
+                ["Descarto o excesso ao final da semana sem registrar as perdas no controle financeiro.", 0]] },
+            { cat: "Inovação e Posicionamento Digital", q: "De que forma você integra canais digitais (redes sociais, delivery próprio ou aplicativos) ao seu modelo de negócio?", o: [
+                ["Utilizo as redes apenas como vitrine esporádica de fotos dos pratos.", 2],
+                ["Desenvolvo estratégias de marketing digital, monitoro métricas de atração e otimizo a embalagem/entrega para manter a qualidade no delivery.", 3],
+                ["Dependo exclusivamente do movimento de clientes presenciais na fachada da loja.", 1],
+                ["Cadastro a loja em aplicativos de entrega sem adequar o cardápio ou o custo das taxas da plataforma.", 0]] },
+            { cat: "Fornecedores e Parcerias Estratégicas", q: "Como você gerencia o relacionamento e a dependência de fornecedores de insumos essenciais?", o: [
+                ["Trabalho com um único fornecedor exclusivo para todos os itens para facilitar o faturamento.", 2],
+                ["Mantenho uma rede diversificada de fornecedores homologados, negociando prazos e prevendo planos de contingência em caso de escassez.", 3],
+                ["Compro insumos no supermercado mais próximo no momento em que os ingredientes acabam durante o serviço.", 1],
+                ["Aceito reajustes de preços dos fornecedores sem realizar cotações periódicas no mercado.", 0]] },
+            { cat: "Resiliência e Resolução de Problemas", q: "Como você reage quando um cliente insatisfeito reclama publicamente da qualidade de um prato ou do tempo de espera?", o: [
+                ["Ignoro o comentário para não dar visibilidade negativa à marca.", 1],
+                ["Escuto com empatia, resolvo o problema de imediato e analiso a falha no processo interno para evitar reincidência.", 3],
+                ["Respondo justificando que a culpa foi da alta demanda ou da falta de insumos no dia.", 2],
+                ["Banindo ou excluindo a avaliação do cliente das redes sociais do estabelecimento.", 0]] },
+            { cat: "Visão Estratégica e Escala", q: "Qual é a sua perspectiva sobre o crescimento a longo prazo do seu negócio gastronômico?", o: [
+                ["Apenas manter o negócio funcionando sem a necessidade de registrar processos ou padronizar receitas.", 1],
+                ["Estruturar manuais operacionais (POP), padronizar receitas e monitorar indicadores (KPIs) para permitir expansão e delegar a operação.", 3],
+                ["Trabalhar continuamente na operação diária sem tempo para analisar métricas financeiras ou planejamento futuro.", 2],
+                ["Expandir para novos pontos comerciais sem consolidação da marca ou estabilidade financeira da matriz.", 0]] }
+        ];
+
+        
+let unlockedTile = 1;
+let activeQuizIndex = null;
+
+function navigateTo(page, anchor) {
+  const home = document.getElementById('page-home'), teste = document.getElementById('page-teste');
+  home.classList.toggle('hidden-page', page !== 'home');
+  teste.classList.toggle('hidden-page', page !== 'teste');
+  if (anchor) setTimeout(() => document.getElementById(anchor)?.scrollIntoView({ behavior: 'smooth' }), 50);
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function renderFlyers() {
+  document.getElementById('carousel').innerHTML = flyersData.map((e, i) => `
+    <div class="flyer">
+      <img src="${e.fotoCard || e.foto}" alt="${e.nome}" onerror="this.style.display='none'">
+      <div>
+        <h3 class="text-2xl" style="letter-spacing:-0.025em">${e.nome.replace(/,\s*$/, '')}</h3>
+        <p class="text-sm mt-1" style="color:rgba(255,255,255,.75)">${e.cidade}</p>
+        <button onclick="openEntrepreneurModal(${i})" class="btn-y px-4 py-2.5 text-sm mt-4">Ver mais</button>
+      </div>
+    </div>`).join('');
+}
+
+function openEntrepreneurModal(i) {
+  const e = flyersData[i]; if (!e) return;
+  document.getElementById('modal-emp-nome').innerText = e.nome.replace(/,\s*$/, '');
+  document.getElementById('modal-emp-cidade').innerText = e.cidade;
+  document.getElementById('modal-emp-historia').innerText = e.historia;
+  document.getElementById('modal-emp-foto').src = e.fotoSobre || e.foto;
+  document.getElementById('modal-emp-instagram').innerHTML = `<i class="fa-brands fa-instagram mr-1.5"></i>${e.instagram}`;
+  document.getElementById('entrepreneur-modal').classList.remove('hidden');
+}
+function closeEntrepreneurModal() { document.getElementById('entrepreneur-modal').classList.add('hidden'); }
+
+function scrollCarousel(dir) {
+  const c = document.getElementById('carousel');
+  const w = c.querySelector('.flyer')?.offsetWidth || 300;
+  c.scrollBy({ left: dir * (w + 20), behavior: 'smooth' });
+}
+
+function renderGameBoard() {
+  document.getElementById('game-board-grid').innerHTML = quizQuestions.map((q, idx) => {
+    const step = idx + 1;
+    let cls = 'locked', icon = '<i class="fa-solid fa-lock text-xs opacity-70"></i>';
+    if (step < unlockedTile) { cls = 'done'; icon = '<i class="fa-solid fa-check text-xs"></i>'; }
+    else if (step === unlockedTile) { cls = 'current'; icon = '<i class="fa-solid fa-play text-xs"></i>'; }
+    return `<button onclick="openQuiz(${idx})" class="tile ${cls}">
+      <div class="flex items-start justify-between w-full"><span class="n">${step}</span>${icon}</div>
+      <span class="t">${q.titulo}</span></button>`;
+  }).join('');
+  const done = Math.min(unlockedTile - 1, 14);
+  document.getElementById('game-progress-text').innerText = `${done} de 14 etapas`;
+  document.getElementById('game-progress-bar').style.width = `${Math.round((done / 14) * 100)}%`;
+  document.getElementById('victory-banner').classList.toggle('hidden', unlockedTile <= 14);
+}
+
+function openQuiz(index) {
+  const step = index + 1;
+  if (step > unlockedTile) return;
+  activeQuizIndex = index;
+  const q = quizQuestions[index];
+  document.getElementById('modal-tile-num').innerText = step;
+  document.getElementById('modal-tile-title').innerText = q.titulo;
+  document.getElementById('modal-question-text').innerText = q.pergunta;
+  document.getElementById('quiz-feedback').classList.add('hidden');
+  document.getElementById('modal-options-container').innerHTML = q.opcoes.map((opt, i) =>
+    `<button onclick="checkAnswer(${i})" class="opt items-center justify-between"><span>${opt}</span><i class="fa-solid fa-chevron-right text-xs text-gray-400"></i></button>`).join('');
+  document.getElementById('quiz-modal').classList.remove('hidden');
+}
+
+function checkAnswer(sel) {
+  const q = quizQuestions[activeQuizIndex];
+  const fb = document.getElementById('quiz-feedback');
+  fb.classList.remove('hidden');
+  if (sel === q.correta) {
+    fb.style.color = '#059669'; fb.innerText = 'Resposta correta! Avançando...';
+    setTimeout(() => {
+      if (activeQuizIndex + 1 === unlockedTile && unlockedTile <= 14) unlockedTile++;
+      closeQuizModal(); renderGameBoard();
+    }, 900);
+  } else {
+    fb.style.color = '#e11d48'; fb.innerText = 'Resposta incorreta. Tente novamente!';
+  }
+}
+function closeQuizModal() { document.getElementById('quiz-modal').classList.add('hidden'); }
+function resetGameProgress() { unlockedTile = 1; renderGameBoard(); }
+
+/* Teste de aptidão (carrossel) */
+let testIndex = 0;
+let testAnswers = new Array(aptitudeQuestions.length).fill(null);
+
+function renderTest() {
+  document.getElementById('test-track').innerHTML = aptitudeQuestions.map((item, qi) => `
+    <div class="test-slide">
+      <p class="text-sm font-semibold" style="color:var(--pink)">${item.cat}</p>
+      <h3 class="text-xl sm:text-2xl mt-1.5 mb-5" style="line-height:1.2;letter-spacing:-0.025em">${item.q}</h3>
+      <div class="space-y-2.5">
+        ${item.o.map((opt, oi) => `<button type="button" onclick="selectTestOption(${qi},${oi})" class="opt ${testAnswers[qi] === oi ? 'sel' : ''}"><span class="radio"></span><span>${opt[0]}</span></button>`).join('')}
+      </div>
+    </div>`).join('');
+  updateTestUI();
+}
+
+function selectTestOption(qi, oi) {
+  testAnswers[qi] = oi;
+  renderTest();
+  if (qi < aptitudeQuestions.length - 1 && qi === testIndex) setTimeout(() => { if (testIndex === qi) testGo(1); }, 450);
+}
+function testGo(dir) {
+  const n = testIndex + dir;
+  if (n < 0 || n >= aptitudeQuestions.length) return;
+  testIndex = n; updateTestUI();
+}
+function testJump(i) { testIndex = i; updateTestUI(); }
+
+function updateTestUI() {
+  const total = aptitudeQuestions.length;
+  const answered = testAnswers.filter(a => a !== null).length;
+  document.getElementById('test-track').style.transform = `translateX(-${testIndex * 100}%)`;
+  document.getElementById('test-counter').innerText = `Pergunta ${testIndex + 1} de ${total}`;
+  document.getElementById('test-answered').innerText = `${answered} respondida${answered === 1 ? '' : 's'}`;
+  document.getElementById('test-progress').style.width = `${((testIndex + 1) / total) * 100}%`;
+  const last = testIndex === total - 1;
+  document.getElementById('test-prev').disabled = testIndex === 0;
+  const nx = document.getElementById('test-next');
+  nx.classList.toggle('hidden', last); nx.disabled = testAnswers[testIndex] === null;
+  const sub = document.getElementById('test-submit');
+  sub.classList.toggle('hidden', !last); sub.disabled = answered < total;
+  document.getElementById('test-dots').innerHTML = aptitudeQuestions.map((_, i) => {
+    const c = i === testIndex ? 'background:#db2777;transform:scale(1.3)' : (testAnswers[i] !== null ? 'background:#34d399' : 'background:#d1d5db');
+    return `<button type="button" onclick="testJump(${i})" aria-label="Pergunta ${i + 1}" class="w-2.5 h-2.5 rounded-full transition-all" style="${c}"></button>`;
+  }).join('');
+}
+
+function calculateAptitude() {
+  if (testAnswers.some(a => a === null)) return;
+  let score = 0;
+  testAnswers.forEach((oi, qi) => { score += aptitudeQuestions[qi].o[oi][1]; });
+  const title = document.getElementById('result-title'), desc = document.getElementById('result-description');
+  document.getElementById('result-score').innerText = `${score} de 30 pontos`;
+  if (score >= 24) {
+    title.innerText = 'Empreendedora nata';
+    desc.innerText = 'Você demonstra excelente visão estratégica, alta resiliência e forte apreço pela cultura gastronômica de Mato Grosso do Sul. Seu negócio tem um potencial gigante para se destacar e prosperar!';
+  } else if (score >= 16) {
+    title.innerText = 'Empreendedora em expansão';
+    desc.innerText = 'Você tem ótimas ideias e dedicação! Com um pouco mais de organização financeira, precificação rigorosa e planejamento para imprevistos, seu empreendimento alcançará um novo patamar.';
+  } else {
+    title.innerText = 'Aprendiz gastronômica';
+    desc.innerText = 'Você tem amor pela culinária! O próximo passo é investir em capacitação sobre gestão financeira e atendimento ao cliente para transformar essa paixão em um negócio sustentável.';
+  }
+  document.getElementById('result-modal').classList.remove('hidden');
+}
+function closeResultModal() { document.getElementById('result-modal').classList.add('hidden'); }
+function restartTest() {
+  testAnswers = new Array(aptitudeQuestions.length).fill(null); testIndex = 0;
+  renderTest(); closeResultModal();
+}
+
+window.onload = function () { renderFlyers(); renderGameBoard(); renderTest(); };
+</script>
+</body>
+</html>
